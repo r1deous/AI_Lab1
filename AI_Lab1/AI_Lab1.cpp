@@ -28,7 +28,7 @@ void SUB(int omega[], int main_selection[]) {
 int main() {
 	
 	setlocale(LC_ALL, "rus");
-	//код Иванов ДАнила
+	//код Иванов Данила
 	
 	int omega[9] = { 2, 3, 5, 8, 4, 6, 0, 2, 0 }; //омега
 	int N6[9] = { 0, 0, 1, 0, 1, 1, 0, 1, 1 }; //шаблон для числа 6
@@ -135,6 +135,11 @@ int main() {
 	{ 1, 0, 0, 1, 1, 0, 0, 1, 0 }
 	};
 
+	cout << "Исходная омега: | ";
+	for (int i = 0; i < COLUMN; i++) {
+		cout << omega[i] << " | ";
+	}cout << endl;
+
 	int teta = 0;
 	int point = 0;
 	bool end_flag = false;
@@ -158,8 +163,6 @@ int main() {
 		}
 		if (count == 9) { func_check = true; }
 		else { func_check = false; }
-		
-		//cout <<"Необходимое число: " << func_check << endl;
 
 		if (weight > teta and func_check == true) {
 			end_flag = true;
@@ -167,29 +170,16 @@ int main() {
 		else if (weight <= teta and func_check == true) {
 			ADD(omega, temp_mass);
 			end_flag = false;
-			/**for (int i = 0; i < COLUMN; i++) {
-				cout << omega[i] << " ";
-			}
-			cout << endl;*/
 		}
 		else if (weight > teta and func_check == false) {
 			SUB(omega, temp_mass);
 			end_flag = false;
-			/*
-			for (int i = 0; i < COLUMN; i++) {
-				cout << omega[i] << " ";
-			}
-			cout << endl;*/
 		}
-		//cout << "Шаг: " << point << endl;
-		//cout << "Флаг: " << end_flag << endl;
-		//cout << "Вес: " << weight << endl;
 		weight = 0;
-		//cout << endl;
 	}
 	if (end_flag == true) {
 		cout << "Нейрон обучился" << endl;
-		cout << "Омега: | ";
+		cout << "Полученая Омега: | ";
 		for (int i = 0; i < COLUMN; i++) {
 			cout << omega[i] << " | ";
 		}
