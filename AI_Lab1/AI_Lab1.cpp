@@ -134,6 +134,19 @@ int main() {
 		{2,  0, 1, 0, 1, 0, 0, 1, 0, 1 },
 	};
 
+	int test_main[10][COLUMN + 1] = {
+		{0, 1,1,0,1,0,1,0,1,1},
+		{1, 0,0,1,1,0,0,0,1,0},
+		{2, 0,1,0,1,0,0,1,0,1},
+		{3, 0,1,1,0,1,0,1,0,0},
+		{4, 1,0,0,1,1,0,0,1,0},
+		{5, 1,1,0,0,1,0,0,1,1},
+		{6, 0,0,1,0,1,1,0,1,1},
+		{7, 0,1,1,0,0,1,0,0,0},
+		{8, 1,1,0,1,1,1,0,1,1},
+		{9, 1,1,0,1,1,0,1,0,0},
+	};
+
 	cout << "Исходная омега: | ";
 	for (int i = 0; i < COLUMN; i++) {
 		cout << omega[i] << " | ";
@@ -166,6 +179,7 @@ int main() {
 			SUB(omega, temp_mass);
 			end_flag = false;
 		}
+		//cout << "Цифра: " << MAIN_SELECTOIN[point][0] << " => Сумма весов: " << weight <<endl;
 		weight = 0;
 	}
 	if (end_flag == true) {
@@ -179,4 +193,13 @@ int main() {
 	else if (end_flag == false) {
 		goto check;
 	}
+
+	for (int point = 0; point < 10; point++) {
+		for (int i = 1; i < COLUMN + 1; i++) {
+			weight += test_main[point][i] * omega[i];
+		}
+		cout << "Цифра: " << test_main[point][0] << " => Сумма весов: " << weight << endl;
+		weight = 0;
+	}
+
 }
